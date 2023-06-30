@@ -1,0 +1,61 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    direction: rtl;
+  }
+td,
+th {
+    
+    
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+
+
+    background-color: #dddddd;
+}
+.btn {
+    margin-bottom: 5px;
+  margin-left:800px;
+    box-sizing: border-box;
+    background-color: rgb(112, 248, 248);
+    direction: rtl;
+    color: black;
+ 
+}
+.delete{
+ 
+    box-sizing: border-box;
+    background-color: rgb(252, 144, 136);
+    direction: rtl;
+    padding: 10px;
+}
+.edit{
+ 
+    box-sizing: border-box;
+    background-color: rgb(248, 212, 145);
+    direction: rtl;
+    padding: 10px;
+}
+.submit{
+ 
+    box-sizing: border-box;
+    background-color: rgb(173, 206, 178);
+    direction: rtl;
+    padding: 10px;
+}
+.cancel{
+ 
+    box-sizing: border-box;
+    background-color: rgb(152, 214, 247);
+    direction: rtl;
+    padding: 10px;
+}
+.header{
+    padding:20px ;
+    text-align: center;
+}

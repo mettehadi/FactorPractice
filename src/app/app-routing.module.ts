@@ -1,7 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GoodsListComponent } from './formes/home/goods/presentation/goodsList/goodsList.component';
+import { GoodReceiptComponent } from './formes/home/goods/presentation/good-receipt/good-receipt.component';
+import { GoodAssigmentComponent } from './formes/home/goods/presentation/goodAssigment/goodAssigment.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "goodsList",
+    component: GoodsListComponent
+  },
+  {
+    path: "goodsReceipt",
+    component: GoodReceiptComponent
+  },
+  {
+    path: "goodsRemittance",
+    component: GoodAssigmentComponent
+  },
+  
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'goodsList'
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,42 @@
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 100%;
+   
+}
+
+li a {
+    display: block;
+    direction: rtl;
+    text-align: right;
+    color: #000;
+    background-color: #bddff6;
+    padding: 20px 20px;
+    height: 100%;
+    .active {
+        background-color: #73abef;
+    }
+}
+li a:hover {
+    background-color: #90eef5;
+    color: #000;
+}
+
+.menu li {
+    text-decoration: none;
+    list-style-type: none;
+    cursor: pointer;
+ 
+    width: 100%;
+    a{
+    text-decoration: none;
+    }
+}
+
+div.container{
+    margin: 1em 2em ;
+    text-align: right;
+    direction: rtl;
+}

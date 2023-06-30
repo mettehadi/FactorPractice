@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "openport": "ng serve --host 0.0.0.0 --port 4201 --disable-host-check",
     "watch": "ng build --watch --configuration development",
+    "buildprod": "ng build --configuration production --aot",
     "test": "ng test"
   },
   "private": true,

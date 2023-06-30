@@ -1,0 +1,48 @@
+<div class="header">
+  <h2>
+    لیست رسید کالا
+  </h2>
+  
+</div>
+
+<button class="btn btn-primary" (click)="addGoode()" type="button">ایجاد</button>
+
+<table class="holiday" >
+  <thead>
+    <th>آیدی</th>
+    <th>نام کالا </th>
+    <th>تعداد کالا</th>
+    <th>قیمت کالا </th>
+      
+    <th>حذف</th>
+    <th>ویرایش</th>
+    <th>پذیزش</th>
+
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of recieveGoodList let i=index" >
+      <th *ngIf="!item.isEdit">{{item.goodsId}}</th>
+      <th *ngIf="item.isEdit">      {{item.goodsId}}</th>
+      <th *ngIf="!item.isEdit">{{item.Name}}</th>
+      <th  *ngIf="item.isEdit">      <input type="text" [id]="'Name'+i"  [(ngModel)]="name"
+        class="form-control"></th>
+      <th *ngIf="!item.isEdit">{{item.Count}}</th>
+      <th  *ngIf="item.isEdit">      <input type="number" [id]="'Count'+i" [(ngModel)]="count"
+        class="form-control"></th>
+      <th *ngIf="!item.isEdit">{{item.Price}}</th>
+      <th  *ngIf="item.isEdit">      <input type="text" [id]="'Price'+i"  [(ngModel)]="price"
+        class="form-control"></th>
+     
+       
+        <th *ngIf="!item.isEdit"><button class="delete" (click)="OnDelete(item.goodsId)" >حذف </button></th>
+        <th *ngIf="!item.isEdit"> <button class="edit"   (click)="Edit(item.goodsId)">ویرایش </button></th>
+        
+        <th *ngIf="item.isEdit"><button class="submit" (click)="OnDSubmit(item.goodsId)" > ثبت</button></th>
+        <th *ngIf="item.isEdit"><button class="cancel"   (click)="cancel(item.goodsId)">لغو </button></th>
+        <th ><button class="resiept" (click)="OnReciept(item.goodsId)" >پذیرش </button></th>
+
+
+    </tr>
+  </tbody>
+</table>

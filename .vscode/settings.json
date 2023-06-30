@@ -1,0 +1,6 @@
+{
+    "files.autoSaveDelay": 2000,
+    "angular2-files.menu.enum": false,
+    "angular2-files.menu.pipe": false,
+    "angular2-files.menu.class": false
+}

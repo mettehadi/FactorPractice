@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "label": "startNormaly",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "label": "startclientwithport",
+      // "path": "dd/dd/",
+      "script": "openport",
+      "isBackground": true,
+      // This task is run before some debug tasks.
+      // Problem is, it's a watch script, and since it never exits, VSCode
+      // complains. All this is needed so VSCode just lets it run.
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Angular Live Development Server.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      }
+    },
+    {
+      "label": "ng-kill-4201",
+      "type": "shell",
+      "command": [
+        "npx kill-port 4201"
+      ],
+    }
+  ]
+}
