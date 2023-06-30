@@ -14,5 +14,6 @@ export class HolidayService {
 
   getGoods =   new BehaviorSubject<any[]>([]);
   getRecieveGoods = new BehaviorSubject<any[]>([]);
+  getFinalGoods = new BehaviorSubject<any[]>([]);
 
 }

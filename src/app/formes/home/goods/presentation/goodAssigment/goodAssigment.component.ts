@@ -152,8 +152,8 @@ export class GoodAssigmentComponent implements OnInit,OnDestroy {
   previousCont:number=0
   OnDSubmit(id:number){
     this.googsAssigmentList.filter(x=>x.goodsId == id).forEach(c=>{
-      this.previousCont = c.Count
-      this.previousPrice =c.Price
+     c.previousCont = c.Count
+     c.previousPrice =c.Price
       c.Name =  c.Name
       c.Count= this.count
       c.Price= this.price
@@ -165,12 +165,12 @@ export class GoodAssigmentComponent implements OnInit,OnDestroy {
     this.TotalList  = this.googsAssigmentList.filter(x=>x.goodsId == id).forEach(c=>{
       c.ActionDate = "2022/04/12"
       c.Type = "Assigment"
-      c. previousCont = this.previousCont 
-      c.previousPrice =  this.previousPrice
+     
      })as any
   
     // this.TotalList.push( ...this.googsAssigmentList , ...item)
     console.log(  this.googsAssigmentList);
+    this.goodsService.getFinalGoods.next(this.googsAssigmentList)
      
   }
   ngOnDestroy(): void {

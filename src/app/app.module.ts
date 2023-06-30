@@ -10,6 +10,7 @@ import { HomeModule } from './formes/home/goods/home.module';
 import { GoodsListModule } from './formes/home/goods/presentation/goodsList/goodsList.module';
 import { GoodReceiptModule } from './formes/home/goods/presentation/good-receipt/good-receipt.module';
 import { GoodAssigmentModule } from './formes/home/goods/presentation/goodAssigment/goodAssigment.module';
+import { ReportgoodsModule } from './formes/home/goods/presentation/reportgoods/reportgoods.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GoodAssigmentModule } from './formes/home/goods/presentation/goodAssigm
     ReactiveFormsModule,
     GoodsListModule,
     GoodReceiptModule,
-    GoodAssigmentModule
+    GoodAssigmentModule,
+    ReportgoodsModule
    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

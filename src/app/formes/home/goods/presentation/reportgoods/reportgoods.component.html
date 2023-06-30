@@ -1,0 +1,35 @@
+<div class="header">
+  <h2>
+     گزارش کالا
+  </h2>
+
+</div>
+
+<!-- <button class="btn btn-primary" (click)="addGoode()" type="button">ایجاد</button> -->
+<!-- <select name="productName" class="form-control" *ngIf="showInput">
+  <option *ngFor="let product of numberList" [value]="product">{{product}}</option>
+</select> -->
+<table class="holiday">
+  <thead>
+    <th>آیدی</th>
+    <th>نام کالا </th>
+    <th>تعداد کالا</th>
+    <th>تعداد حواله کالا </th>
+    <th>موجودی کل</th>
+    <th>قیمت </th>
+    <th>میانگین قیمت</th>
+
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of googsReportList let i=index">
+      <th>{{item.goodsId}}</th>
+      <th>{{item.Name}}</th>
+      <th> {{item.previousCont!=0?item.previousCont:item.Count}}</th>
+      <th> {{item.previousCont!=0?item.Count:0}}</th>
+      <th> {{item.inventory}}</th>
+      <th>{{item.Price}}</th>
+      <th>{{item.averagePrice !=0 ?item.averagePrice:item.Price }} </th>
+    </tr>
+  </tbody>
+</table>
