@@ -31,7 +31,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+            
+              "~font-awesome/css/font-awesome.css"
+          
             ],
             "scripts": []
           },

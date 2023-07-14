@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: "goodsRemittance",
-    component: GoodAssigmentComponent
+    component: GoodReceiptComponent
   },
   {
     path: "reportgoods",

@@ -8,7 +8,7 @@ import { HolidayService } from '../../application/holiday.service';
   styleUrls: ['./reportgoods.component.scss']
 })
 export class ReportgoodsComponent implements OnInit {
-
+  getGoodsSubc!:Subscription
   constructor(private goodsService: HolidayService) { }
   getReciptGoodsSubc!: Subscription;
   googsReportList:any[]=[]
@@ -17,6 +17,7 @@ export class ReportgoodsComponent implements OnInit {
       if(c.length>0){
       this.googsReportList = c
       }
+     
       console.log(  this.googsReportList);
       
   })

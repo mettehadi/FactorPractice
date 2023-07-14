@@ -1,48 +1,115 @@
 <div class="header">
-  <h2>
+  <h2 *ngIf="root=='goodsReceipt'">
     لیست رسید کالا
   </h2>
-  
+  <h2 *ngIf="root=='goodsRemittance'">
+    لیست حواله کالا
+  </h2>
 </div>
+<div >
+  <button *ngIf="root=='goodsReceipt'" class="btn btn-primary" (click)="addGoode()" type="button">ایجاد</button>
+  <input [(ngModel)]="searchGoods" (onSelectedChange)="onDoSearch($event)"
+  placeholder="جستجو"  class="mb-3">
+  <table  *ngIf="root=='goodsReceipt'" class="holiday">
+    <thead>
+      <th>انتخاب</th>
+      <th>نام کالا </th>
+      <th>تعداد کالا</th>
 
-<button class="btn btn-primary" (click)="addGoode()" type="button">ایجاد</button>
-
-<table class="holiday" >
-  <thead>
-    <th>آیدی</th>
-    <th>نام کالا </th>
-    <th>تعداد کالا</th>
-    <th>قیمت کالا </th>
-      
-    <th>حذف</th>
-    <th>ویرایش</th>
-    <th>پذیزش</th>
+      <th>قیمت کالا </th>
+      <th *ngIf="root=='goodsReceipt'">تاریخ رسید کالا </th>
+      <th *ngIf="root=='goodsRemittance'">تاریخ فروش کالا </th>
+      <th>حذف</th>
+      <th>ویرایش</th>
+  
 
 
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of recieveGoodList let i=index" >
-      <th *ngIf="!item.isEdit">{{item.goodsId}}</th>
-      <th *ngIf="item.isEdit">      {{item.goodsId}}</th>
-      <th *ngIf="!item.isEdit">{{item.Name}}</th>
-      <th  *ngIf="item.isEdit">      <input type="text" [id]="'Name'+i"  [(ngModel)]="name"
-        class="form-control"></th>
-      <th *ngIf="!item.isEdit">{{item.Count}}</th>
-      <th  *ngIf="item.isEdit">      <input type="number" [id]="'Count'+i" [(ngModel)]="count"
-        class="form-control"></th>
-      <th *ngIf="!item.isEdit">{{item.Price}}</th>
-      <th  *ngIf="item.isEdit">      <input type="text" [id]="'Price'+i"  [(ngModel)]="price"
-        class="form-control"></th>
-     
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of recieveGoodList let i=index">
+        <th> <input type="checkbox" [id]="'isSelect'+i" [(ngModel)]="item.isSelect"> </th>
+                <th >{{item.Name}}</th>
+           <th *ngIf="!item.isEdit">{{item.Count}}</th>
+      <th  *ngIf="item.isEdit">      <input type="number" [(ngModel)]="count" [id]="'Count'+i" required
+        class="form-control">
+        <div *ngIf="errorCunt" class="error" > لطفا مقادیر را با دقت پر کنید</div>
        
-        <th *ngIf="!item.isEdit"><button class="delete" (click)="OnDelete(item.goodsId)" >حذف </button></th>
-        <th *ngIf="!item.isEdit"> <button class="edit"   (click)="Edit(item.goodsId)">ویرایش </button></th>
-        
-        <th *ngIf="item.isEdit"><button class="submit" (click)="OnDSubmit(item.goodsId)" > ثبت</button></th>
-        <th *ngIf="item.isEdit"><button class="cancel"   (click)="cancel(item.goodsId)">لغو </button></th>
-        <th ><button class="resiept" (click)="OnReciept(item.goodsId)" >پذیرش </button></th>
+      
+
+       </th>
+      <th *ngIf="!item.isEdit">{{item.Price}}</th>
+      <th  *ngIf="item.isEdit">      <input type="number" [(ngModel)]="price" [id]="'Price'+i" required
+        class="form-control">
+        <div *ngIf="errorPrice" class="error" > لطفا مقادیر را با دقت پر کنید</div></th>
+        <th *ngIf="!item.isEdit">{{item.ActionDate}}</th>
+        <th *ngIf="item.isEdit" class="date" > <input type="date" [id]="'date'+i"  [readonly]="!item.isSelect" [(ngModel)]="date" class="form-control"></th>
+     
+      <th *ngIf="!item.isEdit"> <button   [disabled]="!item.isSelect"  class="delete"  (click)="openModal(item.goodsId)" >حذف </button>
+     <div *ngIf="item.isDelete">  <dialog  open > <div class="error"> از حذف این مورد مطمین هستید</div>
+       <button  class="button2"     (click)="OnDelete(item.goodsId)" >حذف </button>
+          
+          <button    class="button1"   (click)="cancelDelete(item.goodsId)" >لغو </button>
+        </dialog>
+      </div> 
+        <th *ngIf="!item.isEdit"> <button class="edit" [disabled]="!item.isSelect" (click)="Edit(item.goodsId)">ویرایش
+          </button></th>
+
+        <th *ngIf="item.isEdit"><button class="submit" (click)="OnDSubmit(item.goodsId)"> ثبت</button></th>
+        <th *ngIf="item.isEdit"><button class="cancel" (click)="cancel(item.goodsId)">لغو </button></th>
+        <!-- <th ><button class="resiept" (click)="OnReciept(item.goodsId)" >پذیرش </button></th> -->
 
 
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+  <table  *ngIf="root=='goodsRemittance'" class="holiday">
+    <thead>
+      <th>انتخاب</th>
+      <th>نام کالا </th>
+      <th>تعداد کالا</th>
+
+      <th>قیمت کالا </th>
+      <th *ngIf="root=='goodsReceipt'">تاریخ رسید کالا </th>
+      <th *ngIf="root=='goodsRemittance'">تاریخ فروش کالا </th>
+      <th>حذف</th>
+      <th>ویرایش</th>
+  
+
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of assignList let i=index">
+        <th> <input type="checkbox" [id]="'isSelect'+i" [(ngModel)]="item.isSelect"> </th>
+                <th >{{item.Name}}</th>
+           <th *ngIf="!item.isEdit">{{item.Count}}</th>
+      <th  *ngIf="item.isEdit">      <input type="number" [(ngModel)]="count" [id]="'Count'+i" required
+        class="form-control">
+        <div *ngIf="errorCunt" class="error" > لطفا مقادیر را با دقت پر کنید</div>
+        <div *ngIf="errorCountLimit" class="error" > حداکثر مقدار این کالا {{item.Count}}</div>
+       </th>
+      <th *ngIf="!item.isEdit">{{item.Price}}</th>
+      <th  *ngIf="item.isEdit">      <input type="number" [(ngModel)]="price" [id]="'Price'+i" required
+        class="form-control">
+        <div *ngIf="errorPrice" class="error" > لطفا مقادیر را با دقت پر کنید</div></th>
+        <th *ngIf="!item.isEdit">{{item.ActionDate}}</th>
+        <th *ngIf="item.isEdit" class="date" > <input type="date" [id]="'date'+i"  [readonly]="!item.isSelect" [(ngModel)]="date" class="form-control"></th>
+     
+      <th *ngIf="!item.isEdit"> <button   [disabled]="!item.isSelect"  class="delete"  (click)="openModal(item.goodsId)" >حذف </button>
+     <div *ngIf="item.isDelete">  <dialog  open > <div class="error"> از حذف این مورد مطمین هستید</div>
+       <button  class="button2"     (click)="OnDeleteAssign(item.goodsId)" >حذف </button>
+          
+          <button    class="button1"   (click)="cancelDeleteAssign(item.goodsId)" >لغو </button>
+        </dialog>
+      </div> 
+        <th *ngIf="!item.isEdit"> <button class="edit" [disabled]="!item.isSelect" (click)="Edit(item.goodsId)">ویرایش
+          </button></th>
+
+        <th *ngIf="item.isEdit"><button class="submit" (click)="OnDSubmitAssign(item.goodsId)"> ثبت</button></th>
+        <th *ngIf="item.isEdit"><button class="cancel" (click)="cancelAssign(item.goodsId)">لغو </button></th>
+        <!-- <th ><button class="resiept" (click)="OnReciept(item.goodsId)" >پذیرش </button></th> -->
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>

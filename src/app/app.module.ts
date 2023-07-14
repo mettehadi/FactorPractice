@@ -12,6 +12,9 @@ import { GoodReceiptModule } from './formes/home/goods/presentation/good-receipt
 import { GoodAssigmentModule } from './formes/home/goods/presentation/goodAssigment/goodAssigment.module';
 import { ReportgoodsModule } from './formes/home/goods/presentation/reportgoods/reportgoods.module';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,6 +22,7 @@ import { ReportgoodsModule } from './formes/home/goods/presentation/reportgoods/
   imports: [
     BrowserModule,
     AppRoutingModule,
+   
     HttpClientModule,
     HomeModule,
     FormsModule,
